@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculadora de presupuesto para viajar a Japón · Rumbo a Japón</title>
+  <meta name="description" content="Calcula cuánto cuesta viajar a Japón desde España, México, Colombia, Argentina o Estados Unidos según días y estilo de viaje.">
+  <link rel="canonical" href="https://www.tudominio.com/herramientas/calculadora-presupuesto.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Calculadora de presupuesto para viajar a Japón · Rumbo a Japón">
+  <meta property="og:description" content="Calcula cuánto cuesta viajar a Japón desde España, México, Colombia, Argentina o Estados Unidos según días y estilo de viaje.">
+  <meta property="og:locale" content="es_ES">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23c8372d'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="../index.html"><span class="logo-mark" aria-hidden="true"></span>Rumbo a Japón</a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <nav class="nav">
+        <a href="../guias/index.html">Guías</a>
+        <a href="../herramientas/calculadora-presupuesto.html">Presupuesto</a>
+        <a href="../recursos.html">Reservar</a>
+        <a href="../tienda.html">Itinerarios</a>
+        <a class="btn btn-primary btn-sm" href="../index.html#newsletter">Checklist gratis</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="article-header">
+      <div class="container">
+        <p class="breadcrumbs"><a href="../index.html">Inicio</a> › Calculadora de presupuesto</p>
+        <h1>¿Cuánto cuesta viajar a Japón?</h1>
+        <p class="lead">Calcula un presupuesto realista por persona según desde dónde vuelas, cuántos días vas y tu estilo de viaje.</p>
+      </div>
+    </section>
+    <section class="section" style="padding-top:8px">
+      <div class="container">
+        <div class="calc">
+          <form id="calc" onsubmit="return false">
+            <div class="field">
+              <label for="origen">¿Desde dónde vuelas?</label>
+              <select id="origen">
+                <option value="es">España</option>
+                <option value="mx">México</option>
+                <option value="co">Colombia, Perú o Centroamérica</option>
+                <option value="ar">Argentina, Chile o Uruguay</option>
+                <option value="us">Estados Unidos</option>
+                <option value="otro">Otro país de Europa</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="dias">Días en Japón: <span id="dias-out">14</span></label>
+              <input type="range" id="dias" min="5" max="30" value="14">
+            </div>
+            <div class="field">
+              <label>Estilo de viaje</label>
+              <div class="seg">
+                <label><input type="radio" name="estilo" value="mochilero"><span>Mochilero</span></label>
+                <label><input type="radio" name="estilo" value="medio" checked><span>Medio</span></label>
+                <label><input type="radio" name="estilo" value="comodo"><span>Cómodo</span></label>
+              </div>
+            </div>
+            <div class="field">
+              <label>Transporte entre ciudades</label>
+              <div class="seg">
+                <label><input type="radio" name="tren" value="poco"><span>Una ciudad</span></label>
+                <label><input type="radio" name="tren" value="clasico" checked><span>Ruta clásica</span></label>
+                <label><input type="radio" name="tren" value="mucho"><span>Mucho tren</span></label>
+              </div>
+            </div>
+            <div class="field">
+              <label for="moneda">Moneda</label>
+              <select id="moneda">
+                <option value="EUR">Euros (€)</option>
+                <option value="USD">Dólares (US$)</option>
+              </select>
+            </div>
+          </form>
+
+          <div class="result" aria-live="polite">
+            <p class="eyebrow" style="color:#f3c9c4">Presupuesto estimado por persona</p>
+            <div class="total" id="total">–</div>
+            <p class="muted" style="color:#c9c3b9" id="pordia"></p>
+            <table id="desglose"></table>
+            <a class="btn btn-primary" data-aff="vuelos" href="#">Buscar vuelos</a>
+            <a class="btn btn-ghost" style="border-color:#fff;color:#fff" data-aff="hoteles" href="#">Ver hoteles</a>
+            <p style="font-size:.82rem;color:#a39d93;margin-top:14px">Estimaciones orientativas con precios de 2026, en habitación doble compartida. Los vuelos varían mucho según fecha y antelación.</p>
+          </div>
+        </div>
+<div class="ad-slot" aria-label="Publicidad"></div>
+        <div class="narrow" style="margin:40px auto 0">
+          <h2>Cómo hemos calculado el presupuesto</h2>
+          <ul>
+            <li><strong>Alojamiento</strong>: por persona y noche, compartiendo habitación. Mochilero en hostal o cápsula, medio en hotel de negocios de 3 estrellas, cómodo en hotel de 4 estrellas con alguna noche en ryokan.</li>
+            <li><strong>Comida</strong>: desde konbini y ramen hasta restaurantes con menú degustación.</li>
+            <li><strong>Transporte local y entradas</strong>: metro, autobuses, templos, museos y alguna atracción de pago.</li>
+            <li><strong>Trenes entre ciudades</strong>: shinkansen o pase regional según la ruta.</li>
+            <li><strong>Extras</strong>: eSIM y seguro de viaje.</li>
+          </ul>
+          <p>¿Quieres un presupuesto exacto para tu ruta? Lo incluimos en el <a href="../tienda.html">itinerario a medida</a>.</p>
+        </div>
+      </div>
+    </section>
+<section class="section" id="newsletter">
+    <div class="container">
+      <div class="newsletter-band">
+        <div>
+          <p class="eyebrow">Gratis</p>
+          <h2>Checklist de 30 pasos para viajar a Japón</h2>
+          <p>Recíbela en tu correo junto con avisos de ofertas de vuelos, cambios en el JR Pass y trucos para ahorrar. Sin spam, te das de baja cuando quieras.</p>
+        </div>
+        <form class="newsletter">
+          <input type="email" name="email" placeholder="tu@email.com" required aria-label="Tu email">
+          <button class="btn btn-primary" type="submit">Quiero la checklist</button>
+          <p class="form-msg" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+  <script>
+  (function () {
+    // Precios en euros por persona.
+    var VUELOS = { es: 950, mx: 1150, co: 1350, ar: 1600, us: 1000, otro: 900 };
+    var DIA = {
+      mochilero: { alojamiento: 35, comida: 25, local: 15 },
+      medio:     { alojamiento: 75, comida: 45, local: 25 },
+      comodo:    { alojamiento: 150, comida: 80, local: 40 }
+    };
+    var TREN = { poco: 60, clasico: 330, mucho: 520 };
+    var USD = 1.08;
+
+    var f = document.getElementById("calc");
+    function val(name) { return f.querySelector('input[name="' + name + '"]:checked').value; }
+
+    function calc() {
+      var dias = +document.getElementById("dias").value;
+      document.getElementById("dias-out").textContent = dias;
+      var estilo = DIA[val("estilo")];
+      var moneda = document.getElementById("moneda").value;
+      var k = moneda === "USD" ? USD : 1;
+      var noches = dias - 1;
+      var filas = [
+        ["Vuelo ida y vuelta", VUELOS[document.getElementById("origen").value]],
+        ["Alojamiento (" + noches + " noches)", estilo.alojamiento * noches],
+        ["Comida", estilo.comida * dias],
+        ["Transporte local y entradas", estilo.local * dias],
+        ["Trenes entre ciudades", TREN[val("tren")]],
+        ["eSIM y seguro de viaje", 25 + 4 * dias]
+      ];
+      var fmt = new Intl.NumberFormat("es-ES", { style: "currency", currency: moneda, maximumFractionDigits: 0 });
+      var total = 0;
+      var html = "";
+      filas.forEach(function (r) {
+        var v = Math.round(r[1] * k);
+        total += v;
+        html += "<tr><td>" + r[0] + "</td><td>" + fmt.format(v) + "</td></tr>";
+      });
+      document.getElementById("desglose").innerHTML = html;
+      document.getElementById("total").textContent = fmt.format(total);
+      var sinVuelo = total - Math.round(filas[0][1] * k);
+      document.getElementById("pordia").textContent = "Unos " + fmt.format(sinVuelo / dias) + " al día en Japón, sin contar el vuelo.";
+    }
+    f.addEventListener("input", calc);
+    f.addEventListener("change", calc);
+    calc();
+  })();
+  </script>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="logo" href="../index.html" style="color:#fff"><span class="logo-mark" aria-hidden="true"></span>Rumbo a Japón</a>
+          <p style="margin-top:12px">Guías prácticas en español para planificar tu viaje a Japón sin perder dinero ni tiempo.</p>
+          <p>Contacto: <a data-email href="#">hola@tudominio.com</a></p>
+        </div>
+        <div>
+          <h4>Planifica</h4>
+          <ul>
+            <li><a href="../guias/primer-viaje-japon.html">Primer viaje</a></li>
+            <li><a href="../guias/itinerario-japon-14-dias.html">Itinerario 14 días</a></li>
+            <li><a href="../guias/jr-pass-vale-la-pena.html">¿Vale la pena el JR Pass?</a></li>
+            <li><a href="../herramientas/calculadora-presupuesto.html">Calculadora de presupuesto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Reserva</h4>
+          <ul>
+            <li><a data-aff="hoteles" href="#">Hoteles</a></li>
+            <li><a data-aff="esim" href="#">eSIM</a></li>
+            <li><a data-aff="seguro" href="#">Seguro de viaje</a></li>
+            <li><a data-aff="tours" href="#">Tours y excursiones</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>La web</h4>
+          <ul>
+            <li><a href="../tienda.html">Itinerarios y asesoría</a></li>
+            <li><a href="../recursos.html">Recursos recomendados</a></li>
+            <li><a href="../legal.html">Aviso legal y privacidad</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © <span id="year">2026</span> Rumbo a Japón. Algunos enlaces son de afiliado: si compras a través de ellos recibimos una pequeña comisión sin coste extra para ti. <a href="../legal.html#afiliados">Más información</a>.
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
